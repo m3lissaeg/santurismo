@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Article;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    
+    $articles = Article::all();
+    return view('welcome')->with('articles', $articles) ;
 });
 
 Auth::routes();
