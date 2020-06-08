@@ -28,4 +28,31 @@ class HomeController extends Controller
         $articles = Article::all();
         return view('home')->with('articles', $articles) ;
     }
+    
+    public function create(){
+        return view('create');
+    }
+
+    public function store(Request $request){
+        // dd($request);
+        $article = new Article();
+        $article->title = $request->title;
+        $article->user_id = auth()->id();
+        $article->abst = $request->abst;
+        $article->body = $request->body;
+        $article->mediapath = $request->mediapath;
+
+        $article->save();
+        return redirect()->route('home');
+    }
+
+    public function destroy($id){
+        dd('delete funciona');
+        $a = Article::findOrFail($id);
+        $a->delete();
+        
+        return redirect()->route('home');
+
+        //se ejecuta desde la vista index
+    }
 }

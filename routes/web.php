@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Article;
+use App\Bird;
+use App\Guide;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,18 @@ use App\Article;
 Route::get('/', function () {
     
     $articles = Article::all();
-    return view('welcome')->with('articles', $articles) ;
+    $birds = Bird::all();
+    $guides = Guide::all();
+    return view('welcome')->with([
+        'articles'=> $articles,
+        'birds'=> $birds,
+        'guides'=> $guides
+    ]) ;
 });
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/create', 'HomeController@create')->name('create');
+Route::post('/store', 'HomeController@store')->name('store');
+Route::delete('/destroy/{id}', 'HomeController@store')->name('destroy');
