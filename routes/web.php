@@ -33,4 +33,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/create', 'HomeController@create')->name('create');
 Route::post('/store', 'HomeController@store')->name('store');
-Route::delete('/destroy/{id}', 'HomeController@store')->name('destroy');
+Route::delete('/destroy/{id}', 'HomeController@destroy')->name('destroy');

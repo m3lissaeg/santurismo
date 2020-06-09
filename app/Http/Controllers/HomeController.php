@@ -47,7 +47,7 @@ class HomeController extends Controller
     }
 
     public function destroy($id){
-        dd('delete funciona');
+        // dd('delete funciona');
         $a = Article::findOrFail($id);
         $a->delete();
         
