@@ -67,12 +67,36 @@ se desarrollo gracias a la [documentacion oficial](https://laravel.com/docs).
 ## Rutas
 
 
-| Method   | URI      | Name | Action  | Middleware   |
-|---|---|---|---|---|
-| GET|HEAD | /        |   Closure | web          |
-| GET|HEAD | /api/user |  Closure | api,auth:api |
-| GET|HEAD | /contact  |  Closure | web          |
-
+| Domain | Method   | URI                    | Name             | Action                                                                 | Middleware |
+|------- | -------   | ----------------------| -----------------| -----------------------------------------------------------------------| ---------- |
+|        | GET|HEAD | /                      |                  | Closure                                                                | web        |
+|        | GET|HEAD | api/user               |                  | Closure                                                                | api        |
+|        |          |                        |                  |                                                                        | auth:api   |
+|        | GET|HEAD | create                 | create           | App\Http\Controllers\HomeController@create                             | web        |
+|        |          |                        |                  |                                                                        | auth       |
+|        | DELETE   | destroy/{id}           | destroy          | App\Http\Controllers\HomeController@destroy                            | web        |
+|        |          |                        |                  |                                                                        | auth       |
+|        | GET|HEAD | home                   | home             | App\Http\Controllers\HomeController@index                              | web        |
+|        |          |                        |                  |                                                                        | auth       |
+|        | POST     | login                  |                  | App\Http\Controllers\Auth\LoginController@login                        | web        |
+|        |          |                        |                  |                                                                        | guest      |
+|        | GET|HEAD | login                  | login            | App\Http\Controllers\Auth\LoginController@showLoginForm                | web        |
+|        |          |                        |                  |                                                                        | guest      |
+|        | POST     | logout                 | logout           | App\Http\Controllers\Auth\LoginController@logout                       | web        |
+|        | GET|HEAD | password/confirm       | password.confirm | App\Http\Controllers\Auth\ConfirmPasswordController@showConfirmForm    | web        |
+|        |          |                        |                  |                                                                        | auth       |
+|        | POST     | password/confirm       |                  | App\Http\Controllers\Auth\ConfirmPasswordController@confirm            | web        |
+|        |          |                        |                  |                                                                        | auth       |
+|        | POST     | password/email         | password.email   | App\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web        |
+|        | GET|HEAD | password/reset         | password.request | App\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web        |
+|        | POST     | password/reset         | password.update  | App\Http\Controllers\Auth\ResetPasswordController@reset                | web        |
+|        | GET|HEAD | password/reset/{token} | password.reset   | App\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web        |
+|        | GET|HEAD | register               | register         | App\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web        |
+|        |          |                        |                  |                                                                        | guest      |
+|        | POST     | register               |                  | App\Http\Controllers\Auth\RegisterController@register                  | web        |
+|        |          |                        |                  |                                                                        | guest      |
+|        | POST     | store                  | store            | App\Http\Controllers\HomeController@store                              | web        |
+|        |          |                        |                  |                                                                        | auth       |
 
 ## Miembros de Equipo 
 
